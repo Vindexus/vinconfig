@@ -2,12 +2,12 @@
   "name": "vinconfig",
   "version": "1.0.0",
   "description": "Simple script for loading config files and validating against a schema.",
-  "main": "index.js",
+  "main": "vinconfig.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Colin 'Vindexus' Kierans",
+  "license": "MIT",
   "dependencies": {
     "debug": "^3.1.0",
     "jsonschema": "^1.2.4"
