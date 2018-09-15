@@ -15,12 +15,13 @@ Create a file called `config.js` that will export your config variables.
 ```
 const config = require('vinconfig')
 const path = require('path')
-const schema {
-  "port": {
-    "type": "number"
-  },
-  "api": {
-    "url": 
+const schema = {
+  type: "object",
+  required: ['port'],
+  properties: {
+    port: {
+      type: "integer"
+    }
   }
 }
 
@@ -36,24 +37,20 @@ module.exports = config(schema, options)
 ### 2. Create Config File(s)
 Create the JSON or JS files that will hold your configuration.
 
-@ `/path/to/your/project/config/production.js`
+@`/path/to/your/project/config/production.js`
 
 ```
 module.exports = {
-  "database": {
-    "username": "admin",
-    "password": "pw-goes-here",
-    "database": "production"
-  },
   "port": 4000
 }
 ```
 
 ### 3. Require Config Loader
+@`/path/to/your/project/server.js`
 
 ```
 #server.js
-const config = require('./config')
+const config = require('./lib/config')
 
 console.log('Listening on port ' + config.port)
 ```
@@ -63,18 +60,17 @@ You can specify which config to load with the ENV variable `CONFIG`. You can cha
 
 Vinconfig will attempt to load multiple file locations until it finds one that works. It attempts to load in this order:
 
- * CONFIG as a path directory to a file, extension included
- * CONFIG with `.json` as extension in defaultDirectory
- * CONFIG with `.js` as extension in defaultDirectory
+ * `CONFIG` as a path directory to a file, extension included
+ * `CONFIG` with `.json` as extension in defaultDirectory
+ * `CONFIG` with `.js` as extension in defaultDirectory
 
 ## Examples
 
 ### Hello World
 
-[View Hello World example](./helloworld).
+[View Hello World example](./examples/helloworld).
 
-Says a message depending on the config file loaded.
-
+Says a different message depending on the config file loaded.
 
 #### Mac & Linux
 `DEBUG=vinconfig node examples/helloworld/index.js`  
