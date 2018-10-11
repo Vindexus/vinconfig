@@ -40,8 +40,14 @@ function Vinconfig (schema = {}, opts = {}) {
   const valid = v.validate(config, schema)
 
   if (valid.errors.length) {
-    valid.errors.forEach(e => debug('ERR: ' + e.message))
-    throw new Error(`Config ${configPath} does not match provided schema`)
+    const msgs = []
+    valid.errors.forEach(e => {
+      msgs.push(e.message)
+      console.log('CONFIG ERR: ' + e.message)
+    })
+
+    const err = `Config ${configPath} does not match provided schema: ${msgs.join(' & ')}`
+    throw new Error(err)
   }
 
   return config
