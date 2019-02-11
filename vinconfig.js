@@ -1,25 +1,12 @@
 const debug = require('debug')('vinconfig')
 const fs = require('fs')
 const path = require('path')
-const ArgumentParser = require('argparse').ArgumentParser;
 const Validator = require('jsonschema').Validator
 const v = new Validator()
 
 
 function Vinconfig (schema = {}, opts = {}) {
   v.addSchema(schema)
-
-  const parser = new ArgumentParser({
-    addHelp: true,
-    description: 'Specify config for Vinconfig. Override ENV vars with CLI arguments.'
-  })
-
-  parser.addArgument(['-c', '--config'], {
-    description: 'Vinconfig variable. Full path to file or its name in the config folder',
-    defaultValue: false
-  })
-
-  const args = parser.parseArgs()
 
   const directory = opts.directory || path.join(process.cwd(), 'config')
   const defaultConfig = opts.default || 'development'
@@ -30,13 +17,7 @@ function Vinconfig (schema = {}, opts = {}) {
 
   let CONFIG = process.env[envVar] || defaultConfig
 
-  if (args.config) {
-    debug(`Using --config for CONFIG`)
-    CONFIG = args.config
-  }
-  else {
-    debug(`env var ${envVar} is ${CONFIG}`)
-  }
+  debug(`env var ${envVar} is ${CONFIG}`)
 
   CONFIG = CONFIG.trim()
   let configPath
