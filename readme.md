@@ -64,6 +64,9 @@ Vinconfig will attempt to load multiple file locations until it finds one that w
  * `CONFIG` with `.json` as extension in defaultDirectory
  * `CONFIG` with `.js` as extension in defaultDirectory
 
+#### Command Line Variables
+You can also specify the config with `--config CONFIG_VALUE` or `-c CONFIG_VALUE`.
+
 ## Examples
 
 ### Hello World
