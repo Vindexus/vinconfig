@@ -9,7 +9,7 @@
   "author": "Colin 'Vindexus' Kierans",
   "license": "MIT",
   "dependencies": {
-    "debug": "^3.1.0",
+    "debug": "^3.2.6",
     "jsonschema": "^1.2.4"
   }
 }
