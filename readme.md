@@ -2,6 +2,8 @@
 
 A simple NodeJS library for loading in config files. Requires that the provided config files match the given schema. Validates config with [jsonschema](https://www.npmjs.com/package/jsonschema) npm package.
 
+Created by [Colin "Vindexus" Kierans](https://colinkierans.com)
+
 ## Installation
 `npm install Vindexus/vinconfig`
 
